@@ -16,6 +16,43 @@
 
 package com.telegrambot.deepl.model;
 
-public record LanguagePairSelection(String sourceLanguage, String targetLanguage) {
+import java.util.Objects;
 
+public final class LanguagePairSelection {
+    private final String sourceLanguage;
+    private final String targetLanguage;
+
+    public LanguagePairSelection(String sourceLanguage, String targetLanguage) {
+        this.sourceLanguage = sourceLanguage;
+        this.targetLanguage = targetLanguage;
+    }
+
+    public String sourceLanguage() {
+        return sourceLanguage;
+    }
+
+    public String targetLanguage() {
+        return targetLanguage;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (obj == null || obj.getClass() != this.getClass()) return false;
+        LanguagePairSelection that = (LanguagePairSelection) obj;
+        return Objects.equals(this.sourceLanguage, that.sourceLanguage) &&
+               Objects.equals(this.targetLanguage, that.targetLanguage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sourceLanguage, targetLanguage);
+    }
+
+    @Override
+    public String toString() {
+        return "LanguagePairSelection[" +
+               "sourceLanguage=" + sourceLanguage + ", " +
+               "targetLanguage=" + targetLanguage + ']';
+    }
 }

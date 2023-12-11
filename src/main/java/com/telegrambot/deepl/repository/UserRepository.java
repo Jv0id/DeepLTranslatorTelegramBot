@@ -16,8 +16,8 @@
 
 package com.telegrambot.deepl.repository;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Timestamp;
 
 @Entity(name = "userDataTable")

@@ -37,28 +37,24 @@ public class StartCommand implements CommandInterface {
     private final UserService userService;
     private final DeepLTelegramBot deeplBot;
 
-    private final static String START_MESSAGE_EN = """
-            🔥Greetings🔥\s
-            
-            My name is DeepLTranslatorBot, as you may have understood from my name I am designed to translate text from one language to another.\s
-            
-            👇👇👇
-            
-            Write /help and you will find out what I can do.
-            
-            I hope you will enjoy working with me.😇
-            """;
-    private final static String START_MESSAGE_RU = """
-            🔥Приветствую🔥\s
-            
-            Меня зовут DeepLTranslatorBot, как вы уже поняли из моего имени, я создан для перевода текста с одного языка на другой.\s
-            
-            👇👇👇
-            
-            Напишите /help и вы узнаете, что я могу сделать.
-            
-            Надеюсь, вам понравится работать со мной.😇
-            """;
+    private final static String START_MESSAGE_EN = "\uD83D\uDD25Greetings\uD83D\uDD25s\n" +
+                                                   "            \n" +
+                                                   "            My name is DeepLTranslatorBot, as you may have understood from my name I am designed to translate text from one language to another.s\n" +
+                                                   "            \n" +
+                                                   "            \uD83D\uDC47\uD83D\uDC47\uD83D\uDC47\n" +
+                                                   "            \n" +
+                                                   "            Write /help and you will find out what I can do.\n" +
+                                                   "            \n" +
+                                                   "            I hope you will enjoy working with me.\uD83D\uDE07";
+    private final static String START_MESSAGE_RU = "\uD83D\uDD25问候\uD83D\uDD25s\n" +
+                                                   "\n" +
+                                                   "我的名字是 DeepLTranslatorBot，正如您已经从我的名字中了解到的，我的工作是将文本从一种语言翻译成另一种语言。\n" +
+                                                   "\n" +
+                                                   "\uD83D\uDC47\uD83D\uDC47\uD83D\uDC47\n" +
+                                                   "\n" +
+                                                   "写 /help 你就会知道我能做什么。\n" +
+                                                   "\n" +
+                                                   "希望您喜欢与我合作 \uD83D\uDE07";
 
     public StartCommand(SendMessageServiceInterface sendMessageServiceInterface,
                         UserService userService,
@@ -88,15 +84,15 @@ public class StartCommand implements CommandInterface {
     @Override
     public void handleCallbackQuery(CallbackQuery callbackQuery) throws TelegramApiException {
         CommandUtility.handleTranslateCallbackQuery(sendMessageServiceInterface,
-                "translate_russian_start",
+                "translate_chinese_start",
                 callbackQuery,
                 START_MESSAGE_RU);
     }
 
     private void setTranslateButtonStart(Long chatId) {
         CommandUtility.setTranslateButton(sendMessageServiceInterface,
-                "Перевести на русский язык 🇷🇺",
-                "translate_russian_start",
+                "翻译成中文",
+                "translate_chinese_start",
                 chatId,
                 START_MESSAGE_EN);
     }

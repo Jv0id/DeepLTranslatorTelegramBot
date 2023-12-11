@@ -30,6 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,14 +44,10 @@ public class AutoTranslateCommand implements CommandInterface {
     private final UserService userService;
 
     private static final String SELECT_LANGUAGE_MESSAGE = "🌐 Please choose the language you want me to translate your message into 🌐";
-    private static final String WRITE_MESSAGE = """
-            \s
-            \s
-            If your translation isn't correct, you can always select specific languages with the command 👉 /set_languages\s
-            \s
-            🖋🖋🖋
-            Now enter a message for translation, if you already wrote it, then just forward it to me again.
-            """;
+    private static final String WRITE_MESSAGE = "            If your translation isn't correct, you can always select specific languages with the command \uD83D\uDC49 /set_languages\n" +
+                                                "            s\n" +
+                                                "            \uD83D\uDD8B\uD83D\uDD8B\uD83D\uDD8B\n" +
+                                                "            Now enter a message for translation, if you already wrote it, then just forward it to me again.";
 
     public AutoTranslateCommand(TranslateMessageServiceInterface translateMessageServiceInterface, SendMessageServiceInterface sendMessageServiceInterface, UserService userService) {
         this.translateMessageServiceInterface = translateMessageServiceInterface;
@@ -90,7 +87,7 @@ public class AutoTranslateCommand implements CommandInterface {
                     log.info("Translated message from the bot: " + translatedText);
                 } else {
                     sendMessageServiceInterface.sendMessage(chatId, "\uD83E\uDD2B An unexpected error occurred during translation. I may not be able to recognise the language. " +
-                            "Try to set up a pair of languages with /set_languages or write to the administrator if I still don't know your language.");
+                                                                    "Try to set up a pair of languages with /set_languages or write to the administrator if I still don't know your language.");
                 }
             }
         }
@@ -128,7 +125,7 @@ public class AutoTranslateCommand implements CommandInterface {
         keyboard.add(createInlineKeyboardButtonRow("🇪🇸 ES", "es"));
         keyboard.add(createInlineKeyboardButtonRow("🇮🇹 IT", "it"));
         keyboard.add(createInlineKeyboardButtonRow("🇷🇺 RU", "ru"));
-        keyboard.add(createInlineKeyboardButtonRow("🇺🇦 UK", "uk"));
+        keyboard.add(createInlineKeyboardButtonRow("\uD83C\uDDE8\uD83C\uDDF3 ZH", "zh"));
 
         inlineKeyboardMarkup.setKeyboard(keyboard);
 
@@ -171,16 +168,25 @@ public class AutoTranslateCommand implements CommandInterface {
     }
 
     private String getLanguageName(String languageCode) {
-        return switch (languageCode) {
-            case "en-US" -> "🇺🇸 English (US)";
-            case "de" -> "🇩🇪 German";
-            case "cs" -> "🇨🇿 Czech";
-            case "fr" -> "🇫🇷 French";
-            case "es" -> "🇪🇸 Spanish";
-            case "it" -> "🇮🇹 Italian";
-            case "ru" -> "🇷🇺 Russian";
-            case "uk" -> "🇺🇦 Ukrainian";
-            default -> "⭕️ Unknown";
-        };
+        switch (languageCode) {
+            case "en-US":
+                return "🇺🇸 English (US)";
+            case "de":
+                return "🇩🇪 German";
+            case "cs":
+                return "🇨🇿 Czech";
+            case "fr":
+                return "🇫🇷 French";
+            case "es":
+                return "🇪🇸 Spanish";
+            case "it":
+                return "🇮🇹 Italian";
+            case "ru":
+                return "🇷🇺 Russian";
+            case "zh":
+                return "\uD83C\uDDE8\uD83C\uDDF3 Chinese";
+            default:
+                return "⭕️ Unknown";
+        }
     }
 }

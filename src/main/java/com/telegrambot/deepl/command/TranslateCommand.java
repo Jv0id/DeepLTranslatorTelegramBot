@@ -43,12 +43,7 @@ public class TranslateCommand implements CommandInterface {
     private final TranslateMessageServiceInterface translateMessageServiceInterface;
     private final SendMessageServiceInterface sendMessageServiceInterface;
     private final UserService userService;
-    private static final String WRITE_MESSAGE = """
-            \s
-            \s
-            🖋🖋🖋
-            Now enter a message for translation, if you already wrote it, then just forward it to me again.
-            """;
+    private static final String WRITE_MESSAGE = "Now enter a message for translation, if you already wrote it, then just forward it to me again.";
 
     public TranslateCommand(TranslateMessageServiceInterface translateMessageServiceInterface,
                             SendMessageServiceInterface sendMessageServiceInterface, UserService userService) {
@@ -152,7 +147,7 @@ public class TranslateCommand implements CommandInterface {
         keyboard.add(createInlineKeyboardButtonRow("🇺🇸 EN", "en", "🇩🇪 DE", "de", "source-"));
         keyboard.add(createInlineKeyboardButtonRow("🇨🇿 CZ", "cs", "🇫🇷 FR", "fr", "source-"));
         keyboard.add(createInlineKeyboardButtonRow("🇪🇸 ES", "es", "🇮🇹 IT", "it", "source-"));
-        keyboard.add(createInlineKeyboardButtonRow("🇷🇺 RU", "ru", "🇺🇦 UK", "uk", "source-"));
+        keyboard.add(createInlineKeyboardButtonRow("🇷🇺 RU", "ru", "\uD83C\uDDE8\uD83C\uDDF3 ZH", "zh", "source-"));
 
         inlineKeyboardMarkup.setKeyboard(keyboard);
 
@@ -214,16 +209,26 @@ public class TranslateCommand implements CommandInterface {
     }
 
     private String getLanguageName(String languageCode) {
-        return switch (languageCode) {
-            case "en-US", "en" -> "🇺🇸 English (US)";
-            case "de" -> "🇩🇪 German";
-            case "cs" -> "🇨🇿 Czech";
-            case "fr" -> "🇫🇷 French";
-            case "es" -> "🇪🇸 Spanish";
-            case "it" -> "🇮🇹 Italian";
-            case "ru" -> "🇷🇺 Russian";
-            case "uk" -> "🇺🇦 Ukrainian";
-            default -> "⭕️ Unknown";
-        };
+        switch (languageCode) {
+            case "en-US":
+            case "en":
+                return "🇺🇸 English (US)";
+            case "de":
+                return "🇩🇪 German";
+            case "cs":
+                return "🇨🇿 Czech";
+            case "fr":
+                return "🇫🇷 French";
+            case "es":
+                return "🇪🇸 Spanish";
+            case "it":
+                return "🇮🇹 Italian";
+            case "ru":
+                return "🇷🇺 Russian";
+            case "uk":
+                return "\uD83C\uDDE8\uD83C\uDDF3 Chinese";
+            default:
+                return "⭕️ Unknown";
+        }
     }
 }

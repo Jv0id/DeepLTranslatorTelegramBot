@@ -57,7 +57,7 @@ public class SendMessageToAllCommand implements CommandInterface {
         if (Objects.equals(config.getAdminId(), chatId)) {
             String messageText = update.getMessage().getText();
             String textToSend = messageText.substring(messageText.indexOf(" "));
-            var users = userRepository.findAll();
+            Iterable<UserRepository> users = userRepository.findAll();
 
             for (UserRepository user : users) {
                 setTranslateButtonAdminMessage(user.getChatId(), textToSend);
@@ -65,7 +65,7 @@ public class SendMessageToAllCommand implements CommandInterface {
             log.info("Admin: " + username + " with id: " + chatId + " using an Admin command: /send");
         } else {
             unknownCommand.execute(update);
-            log.info("User: " +username + " with id: " + chatId + " was trying to use Admin command");
+            log.info("User: " + username + " with id: " + chatId + " was trying to use Admin command");
         }
     }
 
@@ -73,7 +73,7 @@ public class SendMessageToAllCommand implements CommandInterface {
     public void handleCallbackQuery(CallbackQuery callbackQuery) throws TelegramApiException {
         String callbackData = callbackQuery.getData();
 
-        if (callbackData.equals("translate_russian_admin")) {
+        if (callbackData.equals("translate_chinese_admin")) {
             String originalMessage = callbackQuery.getMessage().getText();
             TextResult translatedResult = translateToRussian(originalMessage);
 
@@ -99,8 +99,8 @@ public class SendMessageToAllCommand implements CommandInterface {
 
     private void setTranslateButtonAdminMessage(Long chatId, String textToSendEn) {
         CommandUtility.setTranslateButton(sendMessageServiceInterface,
-                "Перевести на русский язык 🇷🇺",
-                "translate_russian_admin",
+                "翻译成中文",
+                "translate_chinese_admin",
                 chatId,
                 textToSendEn);
     }

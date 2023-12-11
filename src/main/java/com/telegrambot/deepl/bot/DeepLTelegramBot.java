@@ -75,15 +75,30 @@ public class DeepLTelegramBot extends TelegramLongPollingBot {
 
     private void processCallbackQuery(Update update) {
         String callbackData = update.getCallbackQuery().getData();
-        String command = switch (callbackData) {
-            case "translate_russian_start" -> START.getCommandName();
-            case "translate_russian_help" -> HELP.getCommandName();
-            case "translate_russian_lang" -> LANGUAGES.getCommandName();
-            case "translate_russian_support" -> ADMIN_CONTACTS.getCommandName();
-            case "translate_russian_delete" -> DELETE.getCommandName();
-            case "translate_russian_admin" -> ADMIN_SEND_COMMAND.getCommandName();
-            default -> null;
-        };
+        String command;
+        switch (callbackData) {
+            case "translate_chinese_start":
+                command = START.getCommandName();
+                break;
+            case "translate_chinese_help":
+                command = HELP.getCommandName();
+                break;
+            case "translate_chinese_lang":
+                command = LANGUAGES.getCommandName();
+                break;
+            case "translate_chinese_support":
+                command = ADMIN_CONTACTS.getCommandName();
+                break;
+            case "translate_chinese_delete":
+                command = DELETE.getCommandName();
+                break;
+            case "translate_chinese_admin":
+                command = ADMIN_SEND_COMMAND.getCommandName();
+                break;
+            default:
+                command = null;
+                break;
+        }
 
         if (command != null) {
             handleCallbackWithCommand(update, command);

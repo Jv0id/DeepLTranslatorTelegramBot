@@ -25,6 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
 import java.sql.Timestamp;
@@ -47,13 +48,14 @@ public class UserService {
 
 
     public void registerUser(Message msg) {
-        if (userRepositoryInterface.findById(msg.getChatId()).isEmpty()) {
-            UserRepository userRepository = new UserRepository();
-            getUserInfo(msg, userRepository);
-
-            userRepositoryInterface.save(userRepository);
-            log.info("User saved: " + userRepository);
+        if (userRepositoryInterface.findById(msg.getChatId()).isPresent()) {
+            return;
         }
+        UserRepository userRepository = new UserRepository();
+        getUserInfo(msg, userRepository);
+
+        userRepositoryInterface.save(userRepository);
+        log.info("User saved: " + userRepository);
     }
 
     public void deleteUser(ChatIdHolder chatIdHolder) {
@@ -67,8 +69,8 @@ public class UserService {
     }
 
     private void getUserInfo(Message msg, UserRepository userRepository) {
-        var chatId = msg.getChatId();
-        var chat = msg.getChat();
+        long chatId = msg.getChatId();
+        Chat chat = msg.getChat();
 
         userRepository.setChatId(chatId);
         userRepository.setFirstName(chat.getFirstName());
@@ -161,6 +163,4 @@ public class UserService {
         UserLanguageData userLanguageData = userLanguageDataMap.computeIfAbsent(userId, id -> new UserLanguageData());
         userLanguageData.setSourceLanguage(sourceLanguage);
     }
-
-
 }

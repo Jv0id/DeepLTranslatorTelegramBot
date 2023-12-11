@@ -16,6 +16,37 @@
 
 package com.telegrambot.deepl.config;
 
-public record ChatIdHolder(Long chatId) {
+import java.util.Objects;
+
+public final class ChatIdHolder {
+    private final Long chatId;
+
+    public ChatIdHolder(Long chatId) {
+        this.chatId = chatId;
+    }
+
+    public Long chatId() {
+        return chatId;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (obj == null || obj.getClass() != this.getClass()) return false;
+        ChatIdHolder that = (ChatIdHolder) obj;
+        return Objects.equals(this.chatId, that.chatId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(chatId);
+    }
+
+    @Override
+    public String toString() {
+        return "ChatIdHolder[" +
+               "chatId=" + chatId + ']';
+    }
+
 }
 

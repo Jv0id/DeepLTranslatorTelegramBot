@@ -30,26 +30,22 @@ public class DeleteCommand implements CommandInterface {
     private final SendMessageServiceInterface sendMessageServiceInterface;
     private final UserService userService;
 
-    private final static String DELETE_MESSAGE_EN = """
-            ✅Your data were successfully deleted✅
-            
-            If you want to go back, just type /start again.
-            
-            To clear your chat history with this bot, please follow these steps:
-            1. Tap on the bot's name at the top of the chat.
-            2. Tap on 'Clear Messages' (on mobile) or 'Clear Chat History' (on desktop).
-            3. Confirm the action.
-            """;
-    private final static String DELETE_MESSAGE_RU = """
-            ✅Ваши данные были успешно удалены✅
-            
-            Если вы захотите вернуться назад, просто введите /start еще раз.
-
-            Чтобы очистить историю чата с этим ботом, выполните следующие действия:
-            1. Нажмите на имя бота в верхней части чата.
-            2. Нажмите на "Удалить переписку" (на мобильном) или "Очистить историю" (на настольном).
-            3. Подтвердите действие.
-            """;
+    private final static String DELETE_MESSAGE_EN = "✅Your data were successfully deleted✅\n" +
+                                                    "            \n" +
+                                                    "            If you want to go back, just type /start again.\n" +
+                                                    "            \n" +
+                                                    "            To clear your chat history with this bot, please follow these steps:\n" +
+                                                    "            1. Tap on the bot's name at the top of the chat.\n" +
+                                                    "            2. Tap on 'Clear Messages' (on mobile) or 'Clear Chat History' (on desktop).\n" +
+                                                    "            3. Confirm the action.";
+    private final static String DELETE_MESSAGE_RU = "✅您的数据已成功删除✅✅\n" +
+                                                    "\n" +
+                                                    "如果想返回，只需再次输入 /start。\n" +
+                                                    "\n" +
+                                                    "要清除与该机器人的聊天记录，请按以下步骤操作：\n" +
+                                                    "1.点击聊天顶部的机器人名称。\n" +
+                                                    "2.点击 \"删除通信\"（手机）或 \"清除历史记录\"（桌面）。\n" +
+                                                    "3.确认操作。";
 
     public DeleteCommand(SendMessageServiceInterface sendMessageServiceInterface, UserService userService) {
         this.sendMessageServiceInterface = sendMessageServiceInterface;
@@ -79,15 +75,15 @@ public class DeleteCommand implements CommandInterface {
     @Override
     public void handleCallbackQuery(CallbackQuery callbackQuery) throws TelegramApiException {
         CommandUtility.handleTranslateCallbackQuery(sendMessageServiceInterface,
-                "translate_russian_delete",
+                "translate_chinese_delete",
                 callbackQuery,
                 DELETE_MESSAGE_RU);
     }
 
     private void setTranslateButtonDelete(Long chatId) {
         CommandUtility.setTranslateButton(sendMessageServiceInterface,
-                "Перевести на русский язык 🇷🇺",
-                "translate_russian_delete",
+                "翻译成中文",
+                "translate_chinese_delete",
                 chatId,
                 DELETE_MESSAGE_EN);
     }

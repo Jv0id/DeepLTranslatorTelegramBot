@@ -27,40 +27,32 @@ public class LanguagesCommand implements CommandInterface {
 
     private final SendMessageServiceInterface sendMessageServiceInterface;
 
-    private final static String LIST_OF_LANGUAGES_MESSAGE_EN = """
-            🇺🇸🇩🇪🇨🇿🇪🇸🇫🇷🇮🇹🇷🇺🇺🇦
-            Here is a list of available languages:
-            
-            🇺🇸 - English
-            🇩🇪 - German
-            🇨🇿 - Czech
-            🇪🇸 - Spanish
-            🇫🇷 - French
-            🇮🇹 - Italian
-            🇷🇺 - Russian
-            🇺🇦 - Ukrainian
-            
-            You can use all of these languages in auto-define language mode with /translate.\s
-            
-            You can also use these languages with the command /set_languages.
-            """;
-    private final static String LIST_OF_LANGUAGES_MESSAGE_RU = """
-            🇺🇸🇩🇪🇨🇿🇪🇸🇫🇷🇮🇹🇷🇺🇺🇦
-            Вот список доступных языков:
-
-            🇺🇸 - Английский
-            🇩🇪 - Немецкий
-            🇨🇿 - Чешский
-            🇪🇸 - Испанский
-            🇫🇷 - Французский
-            🇮🇹 - Итальянский
-            🇷🇺 - Русский
-            🇺🇦 - Украинский
-
-            Вы можете использовать все эти языки в режиме автоматического определения языка с помощью команды /translate.\s
-
-            Также эти языки доступны с помощью команды /set_languages.
-            """;
+    private final static String LIST_OF_LANGUAGES_MESSAGE_EN = "\n" +
+                                                               "Here is a list of available languages:\n" +
+                                                               "\n" +
+                                                               "\uD83C\uDDFA\uD83C\uDDF8 - English\n" +
+                                                               "\uD83C\uDDE9\uD83C\uDDEA - German\n" +
+                                                               "\uD83C\uDDE8\uD83C\uDDFF - Czech\n" +
+                                                               "\uD83C\uDDEA\uD83C\uDDF8 - Spanish\n" +
+                                                               "\uD83C\uDDEB\uD83C\uDDF7 - French\n" +
+                                                               "\uD83C\uDDEE\uD83C\uDDF9 - Italian\n" +
+                                                               "\uD83C\uDDF7\uD83C\uDDFA - Russian\n" +
+                                                               "\uD83C\uDDE8\uD83C\uDDF3 - Chinese\n" +
+                                                               "You can use all of these languages in auto-define language mode with /translates\n" +
+                                                               "You can also use these languages with the command /set_languages.";
+    private final static String LIST_OF_LANGUAGES_MESSAGE_RU = "\n" +
+                                                               "以下是可用语言列表：\n" +
+                                                               "\n" +
+                                                               "\uD83C\uDDFA\uD83C\uDDF8 - 英语\n" +
+                                                               "\uD83C\uDDE9\uD83C\uDDEA - 德语\n" +
+                                                               "\uD83C\uDDE8\uD83C\uDDFF - 捷克语\n" +
+                                                               "\uD83C\uDDEA\uD83C\uDDF8 - 西班牙语\n" +
+                                                               "\uD83C\uDDEB\uD83C\uDDF7 - 法语\n" +
+                                                               "\uD83C\uDDEE\uD83C\uDDF9 - 意大利语\n" +
+                                                               "\uD83C\uDDF7\uD83C\uDDFA - 俄语\n" +
+                                                               "\uD83C\uDDE8\uD83C\uDDF3 - 中文\n" +
+                                                               "您可以使用 /translates 命令在自动语言检测模式下使用所有这些语言\n" +
+                                                               "此外，还可以使用 /set_languages 命令使用这些语言。";
 
     public LanguagesCommand(SendMessageServiceInterface sendMessageServiceInterface) {
         this.sendMessageServiceInterface = sendMessageServiceInterface;
@@ -84,15 +76,15 @@ public class LanguagesCommand implements CommandInterface {
     @Override
     public void handleCallbackQuery(CallbackQuery callbackQuery) throws TelegramApiException {
         CommandUtility.handleTranslateCallbackQuery(sendMessageServiceInterface,
-                "translate_russian_lang",
+                "translate_chinese_lang",
                 callbackQuery,
                 LIST_OF_LANGUAGES_MESSAGE_RU);
     }
 
     private void setTranslationButtonLanguage(Long chatId) {
         CommandUtility.setTranslateButton(sendMessageServiceInterface,
-                "Перевести на русский язык 🇷🇺",
-                "translate_russian_lang",
+                "翻译成中文",
+                "translate_chinese_lang",
                 chatId,
                 LIST_OF_LANGUAGES_MESSAGE_EN);
     }

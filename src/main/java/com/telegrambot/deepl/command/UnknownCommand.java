@@ -23,9 +23,7 @@ public class UnknownCommand implements CommandInterface {
 
     private final SendMessageServiceInterface sendMessageServiceInterface;
 
-    public static final String UNKNOWN_MESSAGE = """
-    I don't understand this command 🥹, you can write /help to see what I understand.
-    """;
+    public static final String UNKNOWN_MESSAGE = "I don't understand this command 🥹, you can send /help to see what I understand.";
 
     public UnknownCommand(SendMessageServiceInterface sendMessageServiceInterface) {
         this.sendMessageServiceInterface = sendMessageServiceInterface;

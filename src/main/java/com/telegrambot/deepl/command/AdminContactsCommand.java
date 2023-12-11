@@ -27,25 +27,8 @@ public class AdminContactsCommand implements CommandInterface {
 
     private final SendMessageServiceInterface sendMessageServiceInterface;
 
-    private final static String ADMIN_CONTACTS_MESSAGE_EN = """
-                        
-            ✨ In case of any questions, you can contact the Admin of this bot ✨
-                        
-            ✈️ Telegram: @Doberman786
-            📩 Gmail: dev.aleksandr2000@gmail.com
-            📸 Instagram: https://www.instagram.com/_dbrmn_/
-                        
-            📣 Also, you can send your feedback regarding the use of the bot, this will help make it better.
-            """;
-    private final static String ADMIN_CONTACTS_MESSAGE_RU = """
-            ✨ В случае возникновения вопросов, вы можете связаться с администратором этого бота ✨
-
-            ✈️ Telegram: @Doberman786
-            📩 Gmail: dev.aleksandr2000@gmail.com
-            📸 Instagram: https://www.instagram.com/_dbrmn_/
-
-            📣 Также вы можете отправить свой отзыв об использовании бота, это поможет сделать его лучше.
-            """;
+    private final static String ADMIN_CONTACTS_MESSAGE_EN = "✨ In case of any questions, you can contact the Admin of this bot ✨";
+    private final static String ADMIN_CONTACTS_MESSAGE_ZH = "✨如果您有任何问题，可以联系该机器人的管理员";
 
     public AdminContactsCommand(SendMessageServiceInterface sendMessageServiceInterface) {
         this.sendMessageServiceInterface = sendMessageServiceInterface;
@@ -69,15 +52,15 @@ public class AdminContactsCommand implements CommandInterface {
     @Override
     public void handleCallbackQuery(CallbackQuery callbackQuery) throws TelegramApiException {
         CommandUtility.handleTranslateCallbackQuery(sendMessageServiceInterface,
-                "translate_russian_support",
+                "translate_chinese_support",
                 callbackQuery,
-                ADMIN_CONTACTS_MESSAGE_RU);
+                ADMIN_CONTACTS_MESSAGE_ZH);
     }
 
     private void setTranslateButtonSupport(Long chatId) {
         CommandUtility.setTranslateButton(sendMessageServiceInterface,
-                "Перевести на русский язык 🇷🇺",
-                "translate_russian_support",
+                "翻译成中文 \uD83C\uDDE8\uD83C\uDDF3",
+                "translate_chinese_support",
                 chatId,
                 ADMIN_CONTACTS_MESSAGE_EN);
     }

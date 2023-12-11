@@ -27,45 +27,40 @@ public class HelpCommand implements CommandInterface {
 
     private final SendMessageServiceInterface sendMessageServiceInterface;
 
-    private final static String HELP_MESSAGE_EN = """
-            ℹ️ HELP MENU ℹ️
-            
-            🔻 Here you can see commands what I can understand 🔻
-            
-            ❇️ /start - Display greeting message
-            
-            🧠 /help - Display info about acceptable commands
-            
-            🌐 /translate - This command will automatically detect the language of the message you have sent and translate it into the language of your choice
-            
-            👀 /set_languages - The command displays a menu of languages for translation
-                        
-            📙 /languages - To see a list of available languages that the bot understands
-            
-            💭 /support - View bot administrator contacts
-            
-            ⛔️ /delete_my_data - This command will delete all data about you, as well as terminate the bot
-            
-            """;
-    private final static String HELP_MESSAGE_RU = """
-            ℹ️ ПОМОЩЬ ℹ️
-            
-            🔻 Здесь вы можете увидеть команды, которые я понимаю🔻
-            
-            ❇️ /start - Приветственное сообщение
-            
-            🧠 /help - Показать информацию о доступных командах
-            
-            🌐 /translate - Эта команда автоматически определит язык отправленного вами сообщения и переведет его на выбранный вами язык
-                        
-            👀 /set_languages - Команда отображает меню выбора языков для перевода
-            
-            📙 /languages - Посмотреть список доступных языков, которые понимает бот
-            
-            💭 /support - Просмотр контактов администратора бота
-            
-            ⛔️ /delete_my_data - Эта команда удалит все данные о вас, а также завершит работу бота
-            """;
+    private final static String HELP_MESSAGE_EN = "ℹ\uFE0F HELP MENU ℹ\uFE0F\n" +
+                                                  "            \n" +
+                                                  "            \uD83D\uDD3B Here you can see commands what I can understand \uD83D\uDD3B\n" +
+                                                  "            \n" +
+                                                  "            ❇\uFE0F /start - Display greeting message\n" +
+                                                  "            \n" +
+                                                  "            \uD83E\uDDE0 /help - Display info about acceptable commands\n" +
+                                                  "            \n" +
+                                                  "            \uD83C\uDF10 /translate - This command will automatically detect the language of the message you have sent and translate it into the language of your choice\n" +
+                                                  "            \n" +
+                                                  "            \uD83D\uDC40 /set_languages - The command displays a menu of languages for translation\n" +
+                                                  "                        \n" +
+                                                  "            \uD83D\uDCD9 /languages - To see a list of available languages that the bot understands\n" +
+                                                  "            \n" +
+                                                  "            \uD83D\uDCAD /support - View bot administrator contacts\n" +
+                                                  "            \n" +
+                                                  "            ⛔\uFE0F /delete_my_data - This command will delete all data about you, as well as terminate the bot";
+    private final static String HELP_MESSAGE_RU = "ℹ\uFE0F HELP ℹ\uFE0F\n" +
+                                                  "\n" +
+                                                  "\uD83D\uDD3B 在这里您可以看到我理解的命令\uD83D\uDD3B。\n" +
+                                                  "\n" +
+                                                  "❇\uFE0F /start - 欢迎信息\n" +
+                                                  "\n" +
+                                                  "\uD83E\uDDE0 /help - 显示有关可用命令的信息\n" +
+                                                  "\n" +
+                                                  "\uD83C\uDF10 /translate - 该命令将自动检测您发送的信息的语言，并将其翻译成您选择的语言\n" +
+                                                  "\n" +
+                                                  "\uD83D\uDC40 /set_languages - 该命令显示一个菜单，用于选择翻译语言\n" +
+                                                  "\n" +
+                                                  "\uD83D\uDCD9 /languages - 查看机器人可理解的可用语言列表\n" +
+                                                  "\n" +
+                                                  "\uD83D\uDCAD /support - 查看机器人管理员联系方式\n" +
+                                                  "\n" +
+                                                  "⛔\uFE0F /delete_my_data - 该命令将删除有关您的所有数据，并终止机器人。";
 
     public HelpCommand(SendMessageServiceInterface sendMessageServiceInterface) {
         this.sendMessageServiceInterface = sendMessageServiceInterface;
@@ -88,15 +83,15 @@ public class HelpCommand implements CommandInterface {
     @Override
     public void handleCallbackQuery(CallbackQuery callbackQuery) throws TelegramApiException {
         CommandUtility.handleTranslateCallbackQuery(sendMessageServiceInterface,
-                "translate_russian_help",
+                "translate_chinese_help",
                 callbackQuery,
                 HELP_MESSAGE_RU);
     }
 
     private void setTranslateButtonHelp(Long chatId) {
         CommandUtility.setTranslateButton(sendMessageServiceInterface,
-                "Перевести на русский язык 🇷🇺",
-                "translate_russian_help",
+                "翻译成中文",
+                "translate_chinese_help",
                 chatId,
                 HELP_MESSAGE_EN);
     }
