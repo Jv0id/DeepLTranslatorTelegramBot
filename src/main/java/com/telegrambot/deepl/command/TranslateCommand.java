@@ -65,7 +65,7 @@ public class TranslateCommand implements CommandInterface {
             Long chatId = update.getMessage().getChatId();
             String messageToTranslate = update.getMessage().getText();
 
-            if(!userService.isLanguagePairSet(chatId) || "/set_languages".equalsIgnoreCase(messageToTranslate)) {
+            if (!userService.isLanguagePairSet(chatId) || "/set_languages".equalsIgnoreCase(messageToTranslate)) {
                 Integer messageId = update.getMessage().getMessageId();
                 sendSourceLanguageSelectionMessage(chatId, messageId);
             } else {
@@ -128,7 +128,7 @@ public class TranslateCommand implements CommandInterface {
                 EditMessageText editMessageText = new EditMessageText();
                 editMessageText.setChatId(callbackQuery.getMessage().getChatId().toString());
                 editMessageText.setMessageId(callbackQuery.getMessage().getMessageId());
-                editMessageText.setText("Selected languages: " + getLanguageName(userService.getUserSourceLanguage(userId)) + " ➡ " + getLanguageName(targetLanguage) + WRITE_MESSAGE);
+                editMessageText.setText("Selected languages: " + getLanguageName(userService.getUserSourceLanguage(userId)) + " ➡ " + getLanguageName(targetLanguage) + "\n" + WRITE_MESSAGE);
 
                 sendMessageServiceInterface.editMessage(editMessageText);
 
