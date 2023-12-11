@@ -44,7 +44,7 @@ public class AutoTranslateCommand implements CommandInterface {
     private final UserService userService;
 
     private static final String SELECT_LANGUAGE_MESSAGE = "🌐 Please choose the language you want me to translate your message into 🌐";
-    private static final String WRITE_MESSAGE = "If your translation isn't correct, you can always select specific languages with the command \uD83D\uDC49 /set_languages\n" +
+    private static final String WRITE_MESSAGE = "If your translation isn't correct, you can always select specific languages with the command 👉 /set_languages\n" +
                                                 "\n" +
                                                 "Now enter a message for translation, if you already wrote it, then just forward it to me again.";
 
@@ -85,7 +85,7 @@ public class AutoTranslateCommand implements CommandInterface {
                     sendMessageServiceInterface.sendMessage(chatId, translatedText);
                     log.info("Translated message from the bot: " + translatedText);
                 } else {
-                    sendMessageServiceInterface.sendMessage(chatId, "\uD83E\uDD2B An unexpected error occurred during translation. I may not be able to recognise the language. " +
+                    sendMessageServiceInterface.sendMessage(chatId, "🤫 An unexpected error occurred during translation. I may not be able to recognise the language. " +
                                                                     "Try to set up a pair of languages with /set_languages or write to the administrator if I still don't know your language.");
                 }
             }
@@ -124,7 +124,7 @@ public class AutoTranslateCommand implements CommandInterface {
         keyboard.add(createInlineKeyboardButtonRow("🇪🇸 ES", "es"));
         keyboard.add(createInlineKeyboardButtonRow("🇮🇹 IT", "it"));
         keyboard.add(createInlineKeyboardButtonRow("🇷🇺 RU", "ru"));
-        keyboard.add(createInlineKeyboardButtonRow("\uD83C\uDDE8\uD83C\uDDF3 ZH", "zh"));
+        keyboard.add(createInlineKeyboardButtonRow("🇨🇳 ZH", "zh"));
 
         inlineKeyboardMarkup.setKeyboard(keyboard);
 
@@ -183,7 +183,7 @@ public class AutoTranslateCommand implements CommandInterface {
             case "ru":
                 return "🇷🇺 Russian";
             case "zh":
-                return "\uD83C\uDDE8\uD83C\uDDF3 Chinese";
+                return "🇨🇳 Chinese";
             default:
                 return "⭕️ Unknown";
         }

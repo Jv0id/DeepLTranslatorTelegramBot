@@ -147,7 +147,7 @@ public class TranslateCommand implements CommandInterface {
         keyboard.add(createInlineKeyboardButtonRow("🇺🇸 EN", "en", "🇩🇪 DE", "de", "source-"));
         keyboard.add(createInlineKeyboardButtonRow("🇨🇿 CZ", "cs", "🇫🇷 FR", "fr", "source-"));
         keyboard.add(createInlineKeyboardButtonRow("🇪🇸 ES", "es", "🇮🇹 IT", "it", "source-"));
-        keyboard.add(createInlineKeyboardButtonRow("🇷🇺 RU", "ru", "\uD83C\uDDE8\uD83C\uDDF3 ZH", "zh", "source-"));
+        keyboard.add(createInlineKeyboardButtonRow("🇷🇺 RU", "ru", "🇨🇳 ZH", "zh", "source-"));
 
         inlineKeyboardMarkup.setKeyboard(keyboard);
 
@@ -171,7 +171,7 @@ public class TranslateCommand implements CommandInterface {
         keyboard.add(createInlineKeyboardButtonRow("🇺🇸 EN", "en", "🇩🇪 DE", "de", sourceLanguage + "-"));
         keyboard.add(createInlineKeyboardButtonRow("🇨🇿 CZ", "cs", "🇫🇷 FR", "fr", sourceLanguage + "-"));
         keyboard.add(createInlineKeyboardButtonRow("🇪🇸 ES", "es", "🇮🇹 IT", "it", sourceLanguage + "-"));
-        keyboard.add(createInlineKeyboardButtonRow("🇷🇺 RU", "ru", "\uD83C\uDDE8\uD83C\uDDF3 ZH", "zh", sourceLanguage + "-"));
+        keyboard.add(createInlineKeyboardButtonRow("🇷🇺 RU", "ru", "🇨🇳 ZH", "zh", sourceLanguage + "-"));
 
 
         inlineKeyboardMarkup.setKeyboard(keyboard);
@@ -226,7 +226,7 @@ public class TranslateCommand implements CommandInterface {
             case "ru":
                 return "🇷🇺 Russian";
             case "zh":
-                return "\uD83C\uDDE8\uD83C\uDDF3 Chinese";
+                return "🇨🇳 Chinese";
             default:
                 return "⭕️ Unknown";
         }
