@@ -33,17 +33,21 @@ You need to put the tokens into the code by following these steps:
 - Replace `bot.token` [In this properties file](src/main/resources/application.properties) with your own token.
 ``` properties
 # Put your BOT_TOKEN here
-bot.token=YOUR_BOT_TOKEN
+bot.token=<YOUR_BOT_TOKEN>
+bot.adminId=<YOUR_ADMIN_ID>
+bot.name=<YOUR_BOT_NAME>
 ```
-- Replace `bot.name` [as well](src/main/resources/application.properties).
-``` properties
-# Put your BOT_NAME here
-bot.name=YOUR_BOT_NAME
-```
+
 - Replace `authKey` [here](src/main/java/com/telegrambot/deepl/service/TranslateMessageService.java)
 ``` java
 private static final String authKey = YOUR_AUTH_KEY // Put your DEEPL_AUTH_KEY here
 ```
+
+- build docker local image
+``` shell
+docker build -t deepl_bot:v0.1 .
+```
+
 - Do the same steps for [Dockerfile](Dockerfile) and [docker-compose.yml](docker-compose.yml) if you want to use a Docker.
 
 If you want to use your personal database, you will also need to change the appropriate fields in all of the above files.
@@ -55,7 +59,7 @@ For development use `docker-compose.yml` file. Required software:
 
 You should run command:
 ```
-docker-compose up
+docker-compose up [-d]
 ```
 # Technology Stack
 - Maven - Project build system.
