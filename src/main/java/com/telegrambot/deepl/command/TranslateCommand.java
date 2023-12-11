@@ -225,7 +225,7 @@ public class TranslateCommand implements CommandInterface {
                 return "🇮🇹 Italian";
             case "ru":
                 return "🇷🇺 Russian";
-            case "uk":
+            case "zh":
                 return "\uD83C\uDDE8\uD83C\uDDF3 Chinese";
             default:
                 return "⭕️ Unknown";
