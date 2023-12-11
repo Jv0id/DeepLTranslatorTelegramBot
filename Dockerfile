@@ -1,4 +1,7 @@
-FROM openjdk:17-jdk
+FROM openjdk:8-jdk
+RUN apt-get update && apt-get install -y maven
+RUN mvn clean install
+
 ARG JAR_FILE=target/*.jar
 
 # Put YOUR_BOT_NAME here

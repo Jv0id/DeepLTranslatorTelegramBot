@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: jp0id/deepl-tr-tg-bot:latest
+    image: jp0id/deepl-tg-bot:latest
     ports:
       - "8080:8080"
     environment:
