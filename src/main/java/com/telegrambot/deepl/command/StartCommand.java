@@ -37,7 +37,7 @@ public class StartCommand implements CommandInterface {
     private final UserService userService;
     private final DeepLTelegramBot deeplBot;
 
-    private final static String START_MESSAGE_EN = "\uD83D\uDD25Greetings\uD83D\uDD25s\n" +
+    private final static String START_MESSAGE_EN = "\uD83D\uDD25Greetings\uD83D\uDD25\n" +
                                                    "            \n" +
                                                    "            My name is DeepLTranslatorBot, as you may have understood from my name I am designed to translate text from one language to another.s\n" +
                                                    "            \n" +
@@ -46,7 +46,7 @@ public class StartCommand implements CommandInterface {
                                                    "            Write /help and you will find out what I can do.\n" +
                                                    "            \n" +
                                                    "            I hope you will enjoy working with me.\uD83D\uDE07";
-    private final static String START_MESSAGE_RU = "\uD83D\uDD25问候\uD83D\uDD25s\n" +
+    private final static String START_MESSAGE_RU = "\uD83D\uDD25问候\uD83D\uDD25\n" +
                                                    "\n" +
                                                    "我的名字是 DeepLTranslatorBot，正如您已经从我的名字中了解到的，我的工作是将文本从一种语言翻译成另一种语言。\n" +
                                                    "\n" +

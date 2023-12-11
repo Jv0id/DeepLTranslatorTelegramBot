@@ -38,7 +38,7 @@ public class LanguagesCommand implements CommandInterface {
                                                                "\uD83C\uDDEE\uD83C\uDDF9 - Italian\n" +
                                                                "\uD83C\uDDF7\uD83C\uDDFA - Russian\n" +
                                                                "\uD83C\uDDE8\uD83C\uDDF3 - Chinese\n" +
-                                                               "You can use all of these languages in auto-define language mode with /translates\n" +
+                                                               "You can use all of these languages in auto-define language mode with /translate\n" +
                                                                "You can also use these languages with the command /set_languages.";
     private final static String LIST_OF_LANGUAGES_MESSAGE_RU = "\n" +
                                                                "以下是可用语言列表：\n" +

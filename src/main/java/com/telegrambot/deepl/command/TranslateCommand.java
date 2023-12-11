@@ -171,7 +171,7 @@ public class TranslateCommand implements CommandInterface {
         keyboard.add(createInlineKeyboardButtonRow("🇺🇸 EN", "en", "🇩🇪 DE", "de", sourceLanguage + "-"));
         keyboard.add(createInlineKeyboardButtonRow("🇨🇿 CZ", "cs", "🇫🇷 FR", "fr", sourceLanguage + "-"));
         keyboard.add(createInlineKeyboardButtonRow("🇪🇸 ES", "es", "🇮🇹 IT", "it", sourceLanguage + "-"));
-        keyboard.add(createInlineKeyboardButtonRow("🇷🇺 RU", "ru", "🇺🇦 UK", "uk", sourceLanguage + "-"));
+        keyboard.add(createInlineKeyboardButtonRow("🇷🇺 RU", "ru", "\uD83C\uDDE8\uD83C\uDDF3 ZH", "zh", sourceLanguage + "-"));
 
 
         inlineKeyboardMarkup.setKeyboard(keyboard);

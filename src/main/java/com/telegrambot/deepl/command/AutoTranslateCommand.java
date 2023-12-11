@@ -44,10 +44,9 @@ public class AutoTranslateCommand implements CommandInterface {
     private final UserService userService;
 
     private static final String SELECT_LANGUAGE_MESSAGE = "🌐 Please choose the language you want me to translate your message into 🌐";
-    private static final String WRITE_MESSAGE = "            If your translation isn't correct, you can always select specific languages with the command \uD83D\uDC49 /set_languages\n" +
-                                                "            s\n" +
-                                                "            \uD83D\uDD8B\uD83D\uDD8B\uD83D\uDD8B\n" +
-                                                "            Now enter a message for translation, if you already wrote it, then just forward it to me again.";
+    private static final String WRITE_MESSAGE = "If your translation isn't correct, you can always select specific languages with the command \uD83D\uDC49 /set_languages\n" +
+                                                "\n" +
+                                                "Now enter a message for translation, if you already wrote it, then just forward it to me again.";
 
     public AutoTranslateCommand(TranslateMessageServiceInterface translateMessageServiceInterface, SendMessageServiceInterface sendMessageServiceInterface, UserService userService) {
         this.translateMessageServiceInterface = translateMessageServiceInterface;
