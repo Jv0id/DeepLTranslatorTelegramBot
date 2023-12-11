@@ -1,7 +1,9 @@
 # 🤖 DeepL Translator Telegram Bot 🤖
 ![Alt text](https://logovectorseek.com/wp-content/uploads/2020/12/deepl-logo-vector.png)
 
-DeepL Translator Telegram Bot created by [@Doberman786](https://github.com/Doberman786).
+[![Build and Push Docker Image](https://github.com/Jv0id/DeepLTranslatorTelegramBot/actions/workflows/docker-image.yml/badge.svg)](https://github.com/Jv0id/DeepLTranslatorTelegramBot/actions/workflows/docker-image.yml)
+
+DeepL Translator Telegram Bot created by [@Doberman786](https://github.com/Jv0id).
 
 ## Idea
 The main idea of the project, to create a Telegram bot for easy and fast translation of text into different languages.
